@@ -35,7 +35,11 @@ opencv:
 	pip install bin/opencv/*.whl
 
 test: download-test
-	python inference_unet.py -img_dir facade -model_path ./models/model_unet_vgg_16_best.pt -out_viz_dir facade-viz -out_pred_dir facade-pred
+	python inference_unet.py -img_dir data/facade -model_type vgg16 -model_path ./models/model_unet_vgg_16_best.pt -out_viz_dir facade-viz -out_pred_dir facade-pred
 
 download-test:
-	gsutil -m cp -r gs://data.netdron.es/facade gs://data.netdron.es/stone-bench .
+	if [ ! -d ./data ]; then \
+	  	mkdir data
+		gsutil -m cp -r gs://data.netdron.es/facade \
+		gs://data.netdron.es/stone-bench \
+		data; fi
