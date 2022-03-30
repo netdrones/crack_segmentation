@@ -1,18 +1,23 @@
 name: crack
 channels:
+  - pytorch
   - conda-forge
   - anaconda
-  - pytorch
   - defaults
 dependencies:
   - python=3.8
+  - cudatoolkit=10.0
   - tqdm
   - numpy
   - scipy
+  - pandas
   - pillow
   - pytorch
   - matplotlib
   - torchvision
+  - scikit-learn
   - pip
   - pip:
+    - Pillow
+    - scikit-image
     - opencv-python
